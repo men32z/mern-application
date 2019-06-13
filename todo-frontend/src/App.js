@@ -11,8 +11,8 @@ function App() {
     <Router>
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="https://github.com/men32z/mern-application" target="_blank">
-            <img src="/images/logo.png" className="img-fluid" style={{maxHeight:50,}}></img>
+          <a className="navbar-brand" href="https://github.com/men32z/mern-application" target="_blank" rel="noopener noreferrer">
+            <img src="/images/logo.png" className="img-fluid" style={{maxHeight:50,}} alt=""></img>
           </a>
           <Link to="/" className="navbar-brand">Mern-Stack Todo App</Link>
           <div className="collapse navbar-collapse">
