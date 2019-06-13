@@ -1,2 +1,3 @@
 # mern-application
-Till now just a first mern application
+
+A Todo application builded in mern stack
