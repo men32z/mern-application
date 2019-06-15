@@ -1,24 +1,13 @@
 import React, {Component} from 'react';
-import {Link}from 'react-router-dom';
 import axios from 'axios';
-
-const Todo = props => (
-  <tr className={props.todo.todo_completed?'completed':''}>
-    <td>{props.todo.todo_description}</td>
-    <td>{props.todo.todo_responsible}</td>
-    <td>{props.todo.todo_priority}</td>
-    <td>
-      <Link to={"/edit/"+props.todo._id} >Edit</Link>/
-      <Link to={"/delete/"+props.todo._id} >Delete</Link>
-    </td>
-  </tr>
-)
-
+import Todo from './todo-item-list.component';
 
 export default class TodosList extends Component{
   constructor(props){
     super(props);
     this.state = {todos:[]};
+    this.removeHandler = this.removeHandler.bind(this);
+
   }
 
   getTodos(){
@@ -30,10 +19,14 @@ export default class TodosList extends Component{
   }
 
   todoList(){
-    return this.state.todos.map(function(currentTodo, i){
-      return <Todo todo={currentTodo} key={i} />
+    return this.state.todos.map((currentTodo, i)=>{
+      return <Todo todo={currentTodo} key={i} removeHandler={this.removeHandler} />
     });
   }
+
+  removeHandler(id) {
+   this.setState({todos: this.state.todos.filter(x=>x._id!==id)});
+ }
 
   componentDidMount(){
     this.getTodos();
