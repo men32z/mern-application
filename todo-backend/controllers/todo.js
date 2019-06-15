@@ -1,4 +1,4 @@
-let Todo = require('../todo.model');
+let Todo = require('../models/todo');
 
 exports.index = function(req,res){
   Todo.find(function(err, todos){
