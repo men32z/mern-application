@@ -2,9 +2,9 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import CreateTodo from "./components/create-todo.component";
-import TodosList from "./components/todos-list.component";
-import EditTodo from "./components/edit-todo.component";
+import CreateTodo from "./components/todo/create";
+import TodosList from "./components/todo/list";
+import EditTodo from "./components/todo/edit";
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default class CreateTodo extends Component{
   constructor(props){
@@ -55,6 +56,11 @@ export default class CreateTodo extends Component{
     axios.post('http://127.0.0.1:4000/todos/add', newTodo)
     .then((res)=>{
       console.log(res.data);
+      Swal.fire(
+        'Great!',
+        'Your todo has been created.',
+        'success'
+      );
     });
 
     this.setState({

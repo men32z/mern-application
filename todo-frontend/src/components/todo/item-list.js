@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link}from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default class Todos extends Component{
   constructor(props){
@@ -8,11 +9,28 @@ export default class Todos extends Component{
     this.deleteTodo= this.deleteTodo.bind(this);
   }
   deleteTodo(){
-    axios.delete('http://127.0.0.1:4000/todos/delete/'+this.props.todo._id)
-    .then((res)=>{
-      console.log(res.data);
-      this.props.removeHandler(this.props.todo._id);
-    });
+    Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+      axios.delete('http://127.0.0.1:4000/todos/delete/'+this.props.todo._id)
+      .then((res)=>{
+        console.log(res.data);
+        this.props.removeHandler(this.props.todo._id);
+        Swal.fire(
+          'Deleted!',
+          'Your todo has been deleted.',
+          'success'
+        );
+      });
+    }
+  })
   }
   render(){
     return (
